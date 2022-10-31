@@ -1,4 +1,5 @@
 <?php $this->load->view('header')?>
+<div id="center">
 <?php 
 	$text_cart_url = '<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>';
 	$text_cart_url = 'Cart: '.$this->cart->total_items().' item'; 
@@ -7,6 +8,8 @@
 
 <h3>Hi, <?=$_SESSION['nama']?></h3>
 <a href="<?= base_url('Login/logout')?>">logout</a>
+<br/>
+<a href="<?= base_url('Home/report')?>">Report</a>
 
 
 <h3>PiLih Produk</h3>
@@ -24,6 +27,6 @@
         </div>
 	</div>
 </div>
-
+</div>
 <?php endforeach; ?>
 <?php $this->load->view('footer')?>

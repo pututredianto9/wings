@@ -7,8 +7,7 @@ class Models extends CI_Model {
 		return $this->db->get_where($table,$where);
 	}
     public function Product(){
-		//query semua record di table SELECT Product_Code, Product_Name, FLOOR(Price-(Price * (SELECT Discount FROM product)/100)) as Price FROM `product`;
-        $q="SELECT Product_Code, Product_Name, FLOOR(Price-(Price * (SELECT Discount FROM product WHERE Product_Code=a.Product_Code ORDER BY `product`.`Price` ASC limit 1 )/100)) as Price_Diskon, Price FROM `product` as a";
+		$q="SELECT Product_Code, Product_Name, FLOOR(Price-(Price * (SELECT Discount FROM product WHERE Product_Code=a.Product_Code ORDER BY `product`.`Price` ASC limit 1 )/100)) as Price_Diskon, Price FROM `product` as a";
         return $this->db->query($q);
 	}
     public function Detail($Product_Code){
@@ -21,7 +20,6 @@ class Models extends CI_Model {
         return $this->db->query($q);
 	}
     public function checkout(){
-		//create new invoice
         $q= "Select MAX(Document_Number) as number FROM transaction_header";
         $result = $this->db->query($q)->result();
         $tampung = $result[0]->number;
